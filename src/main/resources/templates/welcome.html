@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Bienvenido a esta pagina usuario: <span th:text="${username}"></span></h2>
+ <br>
+ <a th:if="${rol} == '[ADMIN]'" class="btn btn-dark" href="/subcategorias" role="button">Administrar subcategorias</a>
+    <a class="btn btn-dark" href="/post/new" role="button">Crear Post</a>
+</div>
+<div class="container">
+ <table th:if="${user.firstSession}" class="table">
+     <thead class="thead-dark">
+     <tr>
+         <th scope="col">Id</th>
+         <th scope="col">Nombre</th>
+         <th scope="col">Descripcion</th>
+         <th scope="col">Subscriptores</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr th:each="subcategoria: ${subcategorias}">
+        <td>
+            <a th:href="@{/sub/}+${username}+'/'+${subcategoria.id}" >Sub</a>
+        </td>
+        <td th:text="${subcategoria.nombre}">
+        </td>
+        <td th:text="${subcategoria.descripcion}">
+        </td>
+         <td >
+             placeholder: 100
+         </td>
+     </tr>
+     </tbody>
+ </table>
+</div>
+</body>
+</html>

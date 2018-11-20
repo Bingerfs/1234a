@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<a href="/post/new">Nuevo</a>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Texto</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Subcategoria</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post: ${posts}">
+        <td th:text="${post.id}">
+        </td>
+        <td th:text="${post.texto}">
+        </td>
+        <td th:text="${post.user.username}">
+        </td>
+        <td th:text="${post.subcategoria.nombre}">
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

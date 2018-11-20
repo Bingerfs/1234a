@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/subcategoria" th:object="${subcategoria}" method="POST">
+    <b>Nombre:</b><input type="text" th:field="*{nombre}">
+    <br>
+    <b>Descripcion:</b><input type="text" th:field="*{descripcion}">
+    <br>
+    <b>User:</b>
+    <select th:field="*{user}">
+        <option th:each="user: ${users}" th:value="${user.id}" th:selected="true" th:text="${user.username}">
+        </option>
+    </select>
+    <br>
+    <b>Moderador:</b>
+    <select th:field="*{moderator}">
+        <option th:each="user: ${users}"  th:if="${user.rol} == 'MOD'" th:value="${user.id}" th:selected="true" th:text="${user.username}" >
+        </option>
+    </select>
+    <br>
+    <input type="submit" value="Guardar">
+</form>
+</body>
+</html>
